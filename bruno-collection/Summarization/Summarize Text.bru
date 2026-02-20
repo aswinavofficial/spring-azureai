@@ -1,0 +1,21 @@
+meta {
+  name: Summarize Text
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/summarize/text
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "text": "Spring AI is a framework that provides a consistent API for integrating AI capabilities into Spring applications. It abstracts away the complexity of working with different AI providers like OpenAI, Azure OpenAI, and Google Vertex AI. The framework supports chat models, embedding models, image generation, and more. Spring AI also provides tools for Retrieval Augmented Generation (RAG) workflows, including document readers, text splitters, and vector store integrations."
+  }
+}

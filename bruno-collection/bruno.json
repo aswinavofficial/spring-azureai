@@ -1,0 +1,9 @@
+{
+    "version": "1",
+    "name": "Spring Azure AI",
+    "type": "collection",
+    "ignore": [
+        "node_modules",
+        ".git"
+    ]
+}

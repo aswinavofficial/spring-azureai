@@ -1,0 +1,22 @@
+meta {
+  name: Summarize Image (Base64)
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/summarize/image
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "imageBase64": "<BASE64_ENCODED_IMAGE_DATA>",
+    "imageMimeType": "image/jpeg"
+  }
+}

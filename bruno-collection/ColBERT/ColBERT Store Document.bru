@@ -1,0 +1,21 @@
+meta {
+  name: ColBERT Store Document
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/colbert/store
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "text": "Artificial intelligence is a branch of computer science that aims to create intelligent machines that can perform tasks that typically require human intelligence."
+  }
+}

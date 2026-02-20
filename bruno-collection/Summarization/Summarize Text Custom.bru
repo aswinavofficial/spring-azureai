@@ -1,0 +1,22 @@
+meta {
+  name: Summarize Text - Custom Instruction
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/summarize/text
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "text": "Spring AI is a framework that provides a consistent API for integrating AI capabilities into Spring applications. It abstracts away the complexity of working with different AI providers.",
+    "customInstruction": "Summarize this in exactly one sentence."
+  }
+}

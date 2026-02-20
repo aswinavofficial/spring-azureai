@@ -1,0 +1,22 @@
+meta {
+  name: Similarity Search
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{baseUrl}}/api/search
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": "How does Spring AI integrate with Azure?",
+    "topK": 5
+  }
+}

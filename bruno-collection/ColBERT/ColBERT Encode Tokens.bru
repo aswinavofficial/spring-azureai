@@ -1,0 +1,21 @@
+meta {
+  name: ColBERT Encode Tokens
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/colbert/encode
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "text": "What is artificial intelligence?"
+  }
+}

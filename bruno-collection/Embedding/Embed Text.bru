@@ -1,0 +1,22 @@
+meta {
+  name: Embed Text
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{baseUrl}}/api/embed/text
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "text": "Artificial intelligence is transforming how we build software applications.",
+    "store": false
+  }
+}

@@ -1,0 +1,22 @@
+meta {
+  name: ColBERT MaxSim Score
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/colbert/score
+  body: json
+  auth: none
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "query": "What is AI?",
+    "document": "Artificial intelligence is a branch of computer science that aims to create intelligent machines that can perform tasks that typically require human intelligence. These tasks include learning, reasoning, problem solving, perception, and language understanding."
+  }
+}
