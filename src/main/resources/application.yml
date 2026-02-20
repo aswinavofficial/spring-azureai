@@ -2,7 +2,7 @@ server:
   port: 8080
 
 # =============================================================
-# Azure OpenAI - Chat Deployment (GPT-4o with vision support)
+# Azure OpenAI - Dual Deployment Configuration
 # =============================================================
 app:
   azure:
@@ -31,13 +31,6 @@ spring:
         port: ${QDRANT_GRPC_PORT:6334}
         collection-name: ${QDRANT_COLLECTION:documents}
         initialize-schema: true
-
-# =============================================================
-# Disable auto-configuration (we configure manually)
-# =============================================================
-    azure:
-      openai:
-        enabled: false
 
 logging:
   level:
