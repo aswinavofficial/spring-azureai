@@ -45,3 +45,4 @@ application-local.properties
 # === Environment / Secrets ===
 .env
 *.env
+set_cred.sh
