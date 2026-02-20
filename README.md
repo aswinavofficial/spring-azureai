@@ -6,8 +6,8 @@ Spring Boot application integrating with **Azure OpenAI** for AI-powered text/im
 
 | Component | Version |
 |---|---|
-| Spring Boot | 3.5.11 |
-| Spring AI | 1.1.2 |
+| Spring Boot | 4.0.1 |
+| Spring AI | 2.0.0-M2 |
 | Java | 17+ |
 | Vector Store | Qdrant |
 | AI Provider | Azure OpenAI |
@@ -26,7 +26,7 @@ Spring Boot application integrating with **Azure OpenAI** for AI-powered text/im
 ### 1. Prerequisites
 
 - Java 17+
-- Running Qdrant instance (default: `localhost:6334`)
+- Docker (for Qdrant)
 - Azure OpenAI resource with Chat and Embedding deployments
 
 ```bash
@@ -36,7 +36,7 @@ docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant
 
 ### 2. Configuration
 
-Set environment variables or update `src/main/resources/application.yml`:
+Add your Azure OpenAI credentials to `set_cred.sh`:
 
 ```bash
 # Chat deployment (GPT-4o)
@@ -56,8 +56,18 @@ export COLBERT_ENABLED=true
 ### 3. Run
 
 ```bash
-./mvnw spring-boot:run
+source set_cred.sh && ./mvnw spring-boot:run
 ```
+
+## Bruno API Collection
+
+A complete [Bruno](https://www.usebruno.com/) collection is included in `bruno-collection/`. Open it in Bruno via **File → Open Collection** and select the `bruno-collection/` folder.
+
+| Folder | Requests |
+|---|---|
+| Summarization | Summarize Text, Summarize Text Custom, Summarize Image URL, Summarize Image Base64 |
+| Embedding | Embed Text, Embed and Store Text, Embed Image URL, Similarity Search |
+| ColBERT | Encode Tokens, MaxSim Score, Store Document |
 
 ## API Endpoints
 
@@ -140,4 +150,3 @@ src/main/java/com/example/azopenai/
     ├── EmbeddingService.java
     └── ColbertService.java           # Conditional on app.colbert.enabled
 ```
-# spring-azureai
