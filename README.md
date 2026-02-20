@@ -8,7 +8,7 @@ Spring Boot application integrating with **Azure OpenAI** for AI-powered text/im
 |---|---|
 | Spring Boot | 4.0.1 |
 | Spring AI | 2.0.0-M2 |
-| Java | 17+ |
+| Java | 21+ |
 | Vector Store | Qdrant |
 | AI Provider | Azure OpenAI |
 
@@ -25,7 +25,7 @@ Spring Boot application integrating with **Azure OpenAI** for AI-powered text/im
 
 ### 1. Prerequisites
 
-- Java 17+
+- Java 21+
 - Docker (for Qdrant)
 - Azure OpenAI resource with Chat and Embedding deployments
 
