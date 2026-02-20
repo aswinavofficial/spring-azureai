@@ -1,0 +1,45 @@
+server:
+  port: 8080
+
+# =============================================================
+# Azure OpenAI - Chat Deployment (GPT-4o with vision support)
+# =============================================================
+app:
+  azure:
+    chat:
+      endpoint: ${AZURE_CHAT_ENDPOINT:https://your-chat-resource.openai.azure.com}
+      api-key: ${AZURE_CHAT_API_KEY:your-chat-api-key}
+      deployment-name: ${AZURE_CHAT_DEPLOYMENT:gpt-4o}
+    embedding:
+      endpoint: ${AZURE_EMBEDDING_ENDPOINT:https://your-embedding-resource.openai.azure.com}
+      api-key: ${AZURE_EMBEDDING_API_KEY:your-embedding-api-key}
+      deployment-name: ${AZURE_EMBEDDING_DEPLOYMENT:text-embedding-ada-002}
+
+  # ColBERT late interaction model toggle
+  colbert:
+    enabled: ${COLBERT_ENABLED:false}
+    collection-name: ${COLBERT_COLLECTION:colbert_vectors}
+
+# =============================================================
+# Qdrant Vector Store
+# =============================================================
+spring:
+  ai:
+    vectorstore:
+      qdrant:
+        host: ${QDRANT_HOST:localhost}
+        port: ${QDRANT_GRPC_PORT:6334}
+        collection-name: ${QDRANT_COLLECTION:documents}
+        initialize-schema: true
+
+# =============================================================
+# Disable auto-configuration (we configure manually)
+# =============================================================
+    azure:
+      openai:
+        enabled: false
+
+logging:
+  level:
+    com.example.azopenai: DEBUG
+    org.springframework.ai: INFO
