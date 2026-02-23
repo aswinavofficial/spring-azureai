@@ -51,6 +51,12 @@
             <artifactId>spring-ai-starter-model-azure-openai</artifactId>
         </dependency>
 
+        <!-- Spring AI - OpenAI (for Docker Model Runner / OpenAI-compatible endpoints) -->
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-openai</artifactId>
+        </dependency>
+
         <!-- Spring AI - Qdrant Vector Store -->
         <dependency>
             <groupId>org.springframework.ai</groupId>

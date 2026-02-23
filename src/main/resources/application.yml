@@ -2,18 +2,30 @@ server:
   port: 8080
 
 # =============================================================
-# Azure OpenAI - Dual Deployment Configuration
+# AI Model Configuration — per-model provider selection
+# Each model (chat, embedding) can use 'azure' or 'openai'
 # =============================================================
 app:
-  azure:
+  ai:
     chat:
+      provider: ${CHAT_PROVIDER:azure}
+      # Azure OpenAI fields (when provider=azure)
       endpoint: ${AZURE_CHAT_ENDPOINT:https://your-chat-resource.openai.azure.com}
       api-key: ${AZURE_CHAT_API_KEY:your-chat-api-key}
       deployment-name: ${AZURE_CHAT_DEPLOYMENT:gpt-4o}
+      # OpenAI-compatible fields (when provider=openai)
+      base-url: ${OPENAI_CHAT_BASE_URL:http://localhost:12434/engines/llama.cpp/v1}
+      model: ${OPENAI_CHAT_MODEL:ai/qwen3-VL}
+
     embedding:
+      provider: ${EMBEDDING_PROVIDER:azure}
+      # Azure OpenAI fields (when provider=azure)
       endpoint: ${AZURE_EMBEDDING_ENDPOINT:https://your-embedding-resource.openai.azure.com}
       api-key: ${AZURE_EMBEDDING_API_KEY:your-embedding-api-key}
       deployment-name: ${AZURE_EMBEDDING_DEPLOYMENT:text-embedding-ada-002}
+      # OpenAI-compatible fields (when provider=openai)
+      base-url: ${OPENAI_EMBEDDING_BASE_URL:http://localhost:12434/engines/llama.cpp/v1}
+      model: ${OPENAI_EMBEDDING_MODEL:ai/qwen3-VL}
 
   # ColBERT late interaction model toggle
   colbert:

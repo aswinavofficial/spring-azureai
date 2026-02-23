@@ -36,27 +36,50 @@ docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant
 
 ### 2. Configuration
 
-Add your Azure OpenAI credentials to `set_cred.sh`:
+Each model (chat, embedding) can independently use a different provider via `CHAT_PROVIDER` and `EMBEDDING_PROVIDER` (`azure` or `openai`).
+
+#### Azure OpenAI (default)
 
 ```bash
-# Chat deployment (GPT-4o)
+export CHAT_PROVIDER=azure
 export AZURE_CHAT_ENDPOINT=https://your-resource.openai.azure.com
 export AZURE_CHAT_API_KEY=your-key
 export AZURE_CHAT_DEPLOYMENT=gpt-4o
 
-# Embedding deployment
+export EMBEDDING_PROVIDER=azure
 export AZURE_EMBEDDING_ENDPOINT=https://your-resource.openai.azure.com
 export AZURE_EMBEDDING_API_KEY=your-key
 export AZURE_EMBEDDING_DEPLOYMENT=text-embedding-ada-002
+```
 
-# Optional: Enable ColBERT
-export COLBERT_ENABLED=true
+#### Docker Model Runner / OpenAI-compatible
+
+```bash
+export CHAT_PROVIDER=openai
+export OPENAI_CHAT_BASE_URL=http://localhost:12434/engines/llama.cpp/v1
+export OPENAI_CHAT_MODEL=ai/qwen3-VL
+
+export EMBEDDING_PROVIDER=openai
+export OPENAI_EMBEDDING_BASE_URL=http://localhost:12434/engines/llama.cpp/v1
+export OPENAI_EMBEDDING_MODEL=ai/qwen3-VL
+```
+
+#### Mix & Match (e.g., Azure chat + Docker Model Runner embedding)
+
+```bash
+export CHAT_PROVIDER=azure
+export EMBEDDING_PROVIDER=openai
+# ... set respective credentials for each
 ```
 
 ### 3. Run
 
 ```bash
+# With set_cred.sh
 source set_cred.sh && ./mvnw spring-boot:run
+
+# Or inline
+CHAT_PROVIDER=openai EMBEDDING_PROVIDER=openai ./mvnw spring-boot:run
 ```
 
 ## Bruno API Collection
